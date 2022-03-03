@@ -18,7 +18,7 @@ const getById = async (req, res, next) => {
 
         if (!found.length) {
             return res.status(404).json({ 
-                message: 'sales not found', 
+                message: 'sale not found', 
             });
           }
 
