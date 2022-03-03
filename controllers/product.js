@@ -20,9 +20,27 @@ const getById = async (req, res, next) => {
             return res.status(404).json({ 
                 message: 'Product not found', 
             });
-          }
+        }
 
         return res.status(200).json(found);
+    } catch (e) {
+        next(e);
+    }
+};
+
+const delById = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+
+        const found = await productsService.getById(id);
+        if (!found.length) {
+            return res.status(404).json({ 
+                message: 'Product not found', 
+            });
+        }
+        
+        await productsService.delById(id);
+        return res.status(204).end();
     } catch (e) {
         next(e);
     }
@@ -31,4 +49,5 @@ const getById = async (req, res, next) => {
 module.exports = {
     getAll,
     getById,
+    delById,
 };

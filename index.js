@@ -20,6 +20,7 @@ app.get('/', (_request, response) => {
 // app.use('/products', productsRouter);
 // app.use('/sales', salesRouter);
 app.get('/products/:id', productsController.getById);
+app.del('/products/:id', productsController.delById);
 app.get('/products', productsController.getAll);
 app.get('/sales/:id', salesController.getById);
 app.get('/sales', salesController.getAll);
