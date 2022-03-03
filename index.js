@@ -18,6 +18,7 @@ app.get('/', (_request, response) => {
 
 // app.use('/products', productsRouter);
 // app.use('/sales', salesRouter);
+app.get('/products/:id', productsController.getById);
 app.get('/products', productsController.getAll);
 
 app.use(errorMiddleware);
