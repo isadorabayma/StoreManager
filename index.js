@@ -6,6 +6,7 @@ const { errorMiddleware } = require('./middlewares/indexMiddlewares');
 // const productsRouter = require('./routes/productsRoutes');
 // const salesRouter = require('./routes/salesRoutes');
 const productsController = require('./controllers/product');
+const salesController = require('./controllers/sales');
 
 const app = express();
 
@@ -20,6 +21,8 @@ app.get('/', (_request, response) => {
 // app.use('/sales', salesRouter);
 app.get('/products/:id', productsController.getById);
 app.get('/products', productsController.getAll);
+app.get('/sales/:id', salesController.getById);
+app.get('/sales', salesController.getAll);
 
 app.use(errorMiddleware);
 
