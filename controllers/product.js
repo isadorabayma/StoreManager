@@ -13,7 +13,6 @@ const getAll = async (_req, res, next) => {
 const getById = async (req, res, next) => {
     try {
         const { id } = req.params;
-        // console.log('controller', id);
         const found = await productsService.getById(id);
 
         if (!found.length) {
@@ -22,7 +21,7 @@ const getById = async (req, res, next) => {
             });
         }
 
-        return res.status(200).json(found);
+        return res.status(200).json(found[0]);
     } catch (e) {
         next(e);
     }
@@ -46,8 +45,30 @@ const delById = async (req, res, next) => {
     }
 };
 
+const upDateById = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const found = await productsService.getById(id);
+        if (!found.length) {
+            return res.status(404).json({ 
+                message: 'Product not found', 
+            });
+        }
+        
+        const { name, quantity } = req.body;
+        await productsService.upDateById(id, name, quantity);
+
+        const edited = await productsService.getById(id);
+
+        return res.status(200).json(edited);
+    } catch (e) {
+        next(e);
+    }
+};
+
 module.exports = {
     getAll,
     getById,
     delById,
+    upDateById,
 };

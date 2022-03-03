@@ -9,19 +9,27 @@ const getAll = async () => {
 
 const getById = async (id) => {
     const SQL = 'SELECT * FROM StoreManager.products WHERE id=?;';
-    const [result] = await DB.execute(SQL, [id]);
-    // console.log('model', id);
+    const [arrayResult] = await DB.execute(SQL, [id]);
+    // const [result] = arrayResult;
 
-    // console.log(result);
-    return result;
+    return arrayResult;
 };
 
 const delById = async (id) => {
+  // const idInt = parseInt(id);
   const SQL = 'DELETE FROM StoreManager.products WHERE id=?;';
   const [result] = await DB.execute(SQL, [id]);
 
   return result;
 };
+
+// const delById = async (id, name, quantity) => {
+//   // const idInt = parseInt(id);
+//   const SQL = 'DELETE FROM StoreManager.products WHERE id=?;';
+//   const [result] = await DB.execute(SQL, [id, name, quantity]);
+
+//   return result;
+// };
   
 module.exports = {
   getAll,

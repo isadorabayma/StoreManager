@@ -13,14 +13,14 @@ const getAll = async (_req, res, next) => {
 const getById = async (req, res, next) => {
     try {
         const { id } = req.params;
-        // console.log('controller', id);
         const found = await salesService.getById(id);
-
-        if (!found.length) {
+        console.log('x', found);
+   
+        if (found.length < 1) {
             return res.status(404).json({ 
-                message: 'sale not found', 
+                message: 'Sale not found', 
             });
-          }
+        }
 
         return res.status(200).json(found);
     } catch (e) {
