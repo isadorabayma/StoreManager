@@ -16,20 +16,18 @@ const getById = async (id) => {
 };
 
 const delById = async (id) => {
-  // const idInt = parseInt(id);
   const SQL = 'DELETE FROM StoreManager.products WHERE id=?;';
   const [result] = await DB.execute(SQL, [id]);
 
   return result;
 };
 
-// const delById = async (id, name, quantity) => {
-//   // const idInt = parseInt(id);
-//   const SQL = 'DELETE FROM StoreManager.products WHERE id=?;';
-//   const [result] = await DB.execute(SQL, [id, name, quantity]);
+const upDateById = async (id, name, quantity) => {
+  const SQL = 'DELETE FROM StoreManager.products WHERE id=?;';
+  const [result] = await DB.execute(SQL, [id, name, quantity]);
 
-//   return result;
-// };
+  return result;
+};
   
 module.exports = {
   getAll,
