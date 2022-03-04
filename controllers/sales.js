@@ -14,7 +14,6 @@ const getById = async (req, res, next) => {
     try {
         const { id } = req.params;
         const found = await salesService.getById(id);
-        console.log('x', found);
    
         if (found.length < 1) {
             return res.status(404).json({ 
