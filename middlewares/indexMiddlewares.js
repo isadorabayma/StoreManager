@@ -1,7 +1,8 @@
 const errorMiddleware = require('./errorMiddlewares');
-const products = require('./products');
+const { nameVal, quantityVal } = require('./products');
 
   module.exports = {
     errorMiddleware,
-    products,
+    nameVal,
+    quantityVal,
   }; 
