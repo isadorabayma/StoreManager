@@ -17,7 +17,7 @@ const nameVal = (req, res, next) => {
 const quantityVal = (req, res, next) => {
     const { quantity } = req.body;
 
-    if (!quantity) {
+    if (quantity === undefined) {
         return res.status(400).json({ message: isRequired('quantity') });
     }
 

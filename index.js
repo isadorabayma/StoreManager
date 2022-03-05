@@ -20,10 +20,10 @@ app.get('/', (_request, response) => {
 // app.use('/products', productsRouter);
 // app.use('/sales', salesRouter);
 app.get('/products/:id', productsController.getById);
-app.post('/products/:id', nameVal, quantityVal);
-app.put('/products/:id', productsController.upDateById);
+app.put('/products/:id', nameVal, quantityVal, productsController.upDateById);
 app.delete('/products/:id', productsController.delById);
 app.get('/products', productsController.getAll);
+app.post('/products', nameVal, quantityVal);
 app.get('/sales/:id', salesController.getById);
 app.get('/sales', salesController.getAll);
 
