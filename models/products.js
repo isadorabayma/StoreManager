@@ -28,7 +28,6 @@ const upDateById = async (id, name, quantity) => {
   const SQL = 'UPDATE StoreManager.products SET name = ?, quantity = ? WHERE id = ?;';
   const [result] = await DB.execute(SQL, [name, quantity, id]);
   return result;
-
 };
 
 const create = async (name, quantity) => {
