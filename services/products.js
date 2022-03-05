@@ -6,16 +6,12 @@ const getById = async (id) => ProductModel.getById(id);
 
 const delById = async (id) => ProductModel.delById(id);
 
-const upDateById = async (id) => ProductModel.delById(id);
+const upDateById = async (id, name, quantity) => ProductModel.upDateById(id, name, quantity);
 
 const create = async (name, quantity) => {
-    console.log('service', name);
-
     const all = await ProductModel.getAll();
-    console.log('service2', all);
 
     const notUnique = all.some((product) => product.name === name);
-    console.log('service3', notUnique);
 
     if (notUnique) return false;
 
@@ -25,7 +21,6 @@ const create = async (name, quantity) => {
         name,
         quantity,
     };
-    console.log('service3', product);
     
     return product;
 };

@@ -22,18 +22,18 @@ const delById = async (id) => {
   return result;
 };
 
-// const upDateById = async (id, name, quantity) => {
-//   const SQL = 'DELETE FROM StoreManager.products WHERE id=?;';
-//   const [result] = await DB.execute(SQL, [id, name, quantity]);
+const upDateById = async (id, name, quantity) => {
+  console.log('M props', id, name, quantity);
 
-//   return result;
-// };
+  const SQL = 'UPDATE StoreManager.products SET name = ?, quantity = ? WHERE id = ?;';
+  const [result] = await DB.execute(SQL, [name, quantity, id]);
+  return result;
+
+};
 
 const create = async (name, quantity) => {
-  console.log('xxx');
   const SQL = 'INSERT INTO StoreManager.products (name, quantity) VALUES (?,?)';
   const [result] = await DB.execute(SQL, [name, quantity]);
-  console.log('model', result);
 
   return result.insertId;
 };
@@ -43,4 +43,5 @@ module.exports = {
   getById,
   delById,
   create,
+  upDateById,
 };

@@ -49,6 +49,7 @@ const upDateById = async (req, res, next) => {
     try {
         const { id } = req.params;
         const found = await productsService.getById(id);
+        console.log('C found', found);
         if (!found.length) {
             return res.status(404).json({ 
                 message: 'Product not found', 
@@ -56,11 +57,14 @@ const upDateById = async (req, res, next) => {
         }
         
         const { name, quantity } = req.body;
+        console.log('C props', id, name, quantity);
+        console.log('C body', req.body);
+
         await productsService.upDateById(id, name, quantity);
 
         const edited = await productsService.getById(id);
 
-        return res.status(200).json(edited);
+        return res.status(200).json(edited[0]);
     } catch (e) {
         next(e);
     }
