@@ -5,7 +5,7 @@ require('express-async-errors');
 const { errorMiddleware } = require('./middlewares/indexMiddlewares');
 // const productsRouter = require('./routes/productsRoutes');
 // const salesRouter = require('./routes/salesRoutes');
-const productsController = require('./controllers/product');
+const productsController = require('./controllers/products');
 const salesController = require('./controllers/sales');
 
 const app = express();
