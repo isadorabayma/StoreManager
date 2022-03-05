@@ -73,7 +73,6 @@ const create = async (req, res, next) => {
         const created = await productsService.create(name, quantity);
         console.log('controller', created);
 
-
         if (!created) return res.status(409).json({ message: 'Product already exists' });
 
         return res.status(201).json(created);

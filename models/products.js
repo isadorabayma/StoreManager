@@ -1,4 +1,3 @@
-const { quantityVal } = require('../middlewares/products');
 const DB = require('./connection');
 
 const getAll = async () => {

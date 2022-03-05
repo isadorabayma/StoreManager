@@ -17,7 +17,6 @@ const create = async (name, quantity) => {
     const notUnique = all.some((product) => product.name === name);
     console.log('service3', notUnique);
 
-
     if (notUnique) return false;
 
     const createdId = await ProductModel.create(name, quantity);
