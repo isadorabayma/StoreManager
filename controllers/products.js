@@ -66,9 +66,27 @@ const upDateById = async (req, res, next) => {
     }
 };
 
+const create = async (req, res, next) => {
+    try {
+        const { name, quantity } = req.body;
+        console.log('controller', name);
+        const created = await productsService.create(name, quantity);
+        console.log('controller', created);
+
+
+        if (!created) return res.status(409).json({ message: 'Product already exists' });
+
+        return res.status(201).json(created);
+    } catch (e) {
+        console.log('error', e);
+        next(e);
+    }
+};
+
 module.exports = {
     getAll,
     getById,
     delById,
     upDateById,
+    create,
 };
