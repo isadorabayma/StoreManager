@@ -1,4 +1,14 @@
-const { minLength, isRequired, minNumber } = require('./errorMessages');
+const { isRequired, minNumber } = require('./errorMessages');
+
+const productIdVal = (req, res, next) => {
+    const { productId } = req.body;
+
+    if (productId === undefined) {
+        return res.status(400).json({ message: isRequired('productId') });
+    }
+
+    next();
+};
 
 const quantityVal = (req, res, next) => {
     const { quantity } = req.body;
@@ -15,6 +25,6 @@ const quantityVal = (req, res, next) => {
 };
 
 module.exports = {
-    // nameVal,
+    productIdVal,
     quantityVal,
 };
