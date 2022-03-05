@@ -22,12 +22,12 @@ const delById = async (id) => {
   return result;
 };
 
-const upDateById = async (id, name, quantity) => {
-  const SQL = 'DELETE FROM StoreManager.products WHERE id=?;';
-  const [result] = await DB.execute(SQL, [id, name, quantity]);
+// const upDateById = async (id, name, quantity) => {
+//   const SQL = 'DELETE FROM StoreManager.products WHERE id=?;';
+//   const [result] = await DB.execute(SQL, [id, name, quantity]);
 
-  return result;
-};
+//   return result;
+// };
   
 module.exports = {
   getAll,
