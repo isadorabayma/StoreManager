@@ -9,7 +9,6 @@ const productIdVal = (req, res, next) => {
 };
 
 const quantitySaleVal = (req, res, next) => {
-
     if (req.body[0].quantity === undefined) {
         return res.status(400).json({ message: isRequired('quantity') });
     }
