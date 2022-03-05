@@ -21,7 +21,7 @@ const quantityVal = (req, res, next) => {
         return res.status(400).json({ message: isRequired('quantity') });
     }
 
-    if (quantity.length > 0 || Number.isInteger(quantity)) {
+    if (quantity <= 0 || !Number.isInteger(quantity)) {
         return res.status(422).json({ message: minNumber('quantity', 1) });
     }
 

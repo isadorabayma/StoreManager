@@ -1,3 +1,4 @@
+const { quantityVal } = require('../middlewares/products');
 const DB = require('./connection');
 
 const getAll = async () => {
@@ -28,9 +29,19 @@ const delById = async (id) => {
 
 //   return result;
 // };
+
+const create = async (name, quantity) => {
+  console.log('xxx');
+  const SQL = 'INSERT INTO StoreManager.products (name, quantity) VALUES (?,?)';
+  const [result] = await DB.execute(SQL, [name, quantity]);
+  console.log('model', result);
+
+  return result.insertId;
+};
   
 module.exports = {
   getAll,
   getById,
   delById,
+  create,
 };
