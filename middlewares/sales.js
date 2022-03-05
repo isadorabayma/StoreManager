@@ -1,21 +1,20 @@
 const { isRequired, minNumber } = require('./errorMessages');
 
 const productIdVal = (req, res, next) => {
-    const { productId } = req.body;
-
-    if (productId === undefined) {
+    if (!req.body[0].productId) {
         return res.status(400).json({ message: isRequired('productId') });
     }
 
     next();
 };
 
-const quantityVal = (req, res, next) => {
-    const { quantity } = req.body;
+const quantitySaleVal = (req, res, next) => {
 
-    if (quantity === undefined) {
+    if (req.body[0].quantity === undefined) {
         return res.status(400).json({ message: isRequired('quantity') });
     }
+
+    const { quantity } = req.body[0];
 
     if (quantity.length > 0 || Number.isInteger(quantity)) {
         return res.status(422).json({ message: minNumber('quantity', 1) });
@@ -26,5 +25,5 @@ const quantityVal = (req, res, next) => {
 
 module.exports = {
     productIdVal,
-    quantityVal,
+    quantitySaleVal,
 };

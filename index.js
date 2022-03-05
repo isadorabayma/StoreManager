@@ -2,7 +2,8 @@ require('dotenv').config();
 const express = require('express');
 require('express-async-errors');
 
-const { errorMiddleware, nameVal, quantityVal } = require('./middlewares/indexMiddlewares');
+const { errorMiddleware, quantitySaleVal,
+   nameVal, quantityVal, productIdVal } = require('./middlewares/indexMiddlewares');
 // const productsRouter = require('./routes/productsRoutes');
 // const salesRouter = require('./routes/salesRoutes');
 const productsController = require('./controllers/products');
@@ -25,7 +26,9 @@ app.delete('/products/:id', productsController.delById);
 app.get('/products', productsController.getAll);
 app.post('/products', nameVal, quantityVal);
 app.get('/sales/:id', salesController.getById);
+app.put('/sales/:id', productIdVal, quantitySaleVal);
 app.get('/sales', salesController.getAll);
+app.post('/sales', productIdVal, quantitySaleVal);
 
 app.use(errorMiddleware);
 
