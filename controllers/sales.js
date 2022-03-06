@@ -1,4 +1,3 @@
-const { quantityVal } = require('../middlewares/products');
 const salesService = require('../services/sales');
 
 const getAll = async (_req, res, next) => {
