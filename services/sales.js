@@ -16,7 +16,6 @@ const upDateById = async (id, productId, quantity) => {
     ],
   };
   return updated;
-
 };
 
 module.exports = {
