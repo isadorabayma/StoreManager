@@ -49,7 +49,7 @@ const upDateById = async (req, res, next) => {
     try {
         const { id } = req.params;
         const found = await productsService.getById(id);
-        console.log('C found', found);
+        // console.log('C found', found);
         if (!found.length) {
             return res.status(404).json({ 
                 message: 'Product not found', 
@@ -57,8 +57,8 @@ const upDateById = async (req, res, next) => {
         }
         
         const { name, quantity } = req.body;
-        console.log('C props', id, name, quantity);
-        console.log('C body', req.body);
+        // console.log('C props', id, name, quantity);
+        // console.log('C body', req.body);
 
         await productsService.upDateById(id, name, quantity);
 
@@ -73,9 +73,9 @@ const upDateById = async (req, res, next) => {
 const create = async (req, res, next) => {
     try {
         const { name, quantity } = req.body;
-        console.log('controller', name);
+        // console.log('controller', name);
         const created = await productsService.create(name, quantity);
-        console.log('controller', created);
+        // console.log('controller', created);
 
         if (!created) return res.status(409).json({ message: 'Product already exists' });
 

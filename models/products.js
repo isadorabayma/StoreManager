@@ -9,10 +9,9 @@ const getAll = async () => {
 
 const getById = async (id) => {
     const SQL = 'SELECT * FROM StoreManager.products WHERE id=?;';
-    const [arrayResult] = await DB.execute(SQL, [id]);
-    // const [result] = arrayResult;
+    const [result] = await DB.execute(SQL, [id]);
 
-    return arrayResult;
+    return result;
 };
 
 const delById = async (id) => {
@@ -23,8 +22,6 @@ const delById = async (id) => {
 };
 
 const upDateById = async (id, name, quantity) => {
-  console.log('M props', id, name, quantity);
-
   const SQL = 'UPDATE StoreManager.products SET name = ?, quantity = ? WHERE id = ?;';
   const [result] = await DB.execute(SQL, [name, quantity, id]);
   return result;
