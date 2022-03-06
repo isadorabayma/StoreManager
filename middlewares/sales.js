@@ -15,7 +15,7 @@ const quantitySaleVal = (req, res, next) => {
 
     const { quantity } = req.body[0];
 
-    if (quantity.length > 0 || Number.isInteger(quantity)) {
+    if (quantity.length <= 1 || !Number.isInteger(quantity)) {
         return res.status(422).json({ message: minNumber('quantity', 1) });
     }
 
