@@ -5,7 +5,18 @@ const getAll = async () => salesModel.getAll();
 const getById = async (id) => salesModel.getById(id);
 
 const upDateById = async (id, productId, quantity) => {
-  salesModel.upDateById(id, productId, quantity);
+  await salesModel.upDateById(id, productId, quantity);
+  const updated = {
+    saleId: id,
+    itemUpdated: [
+      {
+        productId,
+        quantity,
+      },
+    ],
+  };
+  return updated;
+
 };
 
 module.exports = {
