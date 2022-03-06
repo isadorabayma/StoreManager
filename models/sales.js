@@ -24,8 +24,25 @@ const getById = async (id) => {
   
   return result;
 };
+
+// https://www.sqlservertutorial.net/sql-server-basics/sql-server-update-join/
+const upDateById = async (id, productId, quantity) => {
+  const SQL = `
+  UPDATE
+      StoreManager.sales_products
+    SET
+      quantity = ?
+    WHERE
+      sale_id = ? 
+      AND product_id = ?;`;
+  
+  const [result] = await DB.execute(SQL, [quantity, id, productId]);
+  
+  return result;
+};
   
 module.exports = {
   getAll,
   getById,
+  upDateById,
 };
